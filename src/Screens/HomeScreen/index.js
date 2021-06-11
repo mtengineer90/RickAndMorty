@@ -11,10 +11,12 @@ import {
 } from 'react-native';
 import styles from './styles';
 
+import BolumCard from '../../Components/BolumCard';
+
 const HomeScreen = ({navigation, route}) => {
   const [dataList, setDataList] = useState([]);
   const [isLoading, setisLoading] = useState(true);
-
+  const [refreshing, setRefreshing] = useState(false);
   const fetchbolumList = async () => {
     try {
       const responseP1 = await fetch(
@@ -35,6 +37,7 @@ const HomeScreen = ({navigation, route}) => {
         ...responseJsonP3.results,
       ]);
       setisLoading(false);
+      setRefreshing(false);
       return responseJson;
     } catch (error) {
       return null;
@@ -48,17 +51,17 @@ const HomeScreen = ({navigation, route}) => {
   }, []);
   const renderItem = ({item}) => {
     return (
-      <TouchableOpacity
-        style={styles.container}
-        onPress={() => navigation.navigate('BolumInfo', item)}>
-        <Text style={styles.title}>
-          <Text style={styles.content}>Bölüm :</Text>
-          {item.bolum}
-        </Text>
-        <Text>isim:{item.name}</Text>
-        <Text>tarih:{item.air_date}</Text>
-      </TouchableOpacity>
+      <BolumCard
+      item={item}
+      bolum={item.bolum}
+      bolumName={item.name}
+      navigation={navigation}
+      tarih={item.tarih}
+    />
     );
+    const refreshHandler = () => {
+      setRefreshing(true);
+      fetchbolumList();
   };
   if (isLoading) {
     return (
@@ -73,6 +76,8 @@ const HomeScreen = ({navigation, route}) => {
           data={dataList}
           renderItem={renderItem}
           keyExtractor={item => item.id}
+          refreshing={refreshing}
+          onRefresh={refreshHandler}
         />
       </View>
     );
