@@ -13,11 +13,17 @@ const MainStack = () => (
       options={{
         headerTitle: 'Rick and Morty Uygulaması',
         headerTitleAlign: 'center',
+        headerTintColor: '#4d6994'
       }}
     />
     <Stack.Screen
       name="KarakterInfo"
       component={SCREENS.KarakterInforScreen}
+      options={{
+        headerTitle: 'Karakter Ekranı',
+        //headerTitleAlign: 'center',
+        headerTintColor: '#4d6994'
+      }}
     />
     <Stack.Screen
       name="BolumInfo"

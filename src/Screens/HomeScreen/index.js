@@ -51,14 +51,14 @@ const HomeScreen = ({navigation, route}) => {
   }, []);
   const renderItem = ({item}) => {
     return (
-      <BolumCard
+      <BolumCard color="#ff5c5c"
       item={item}
-      bolum={item.bolum}
+      bolum={item.episode}
       bolumName={item.name}
       navigation={navigation}
-      tarih={item.tarih}
+      tarih={item.air_date}
     />
-    );
+    );};
     const refreshHandler = () => {
       setRefreshing(true);
       fetchbolumList();

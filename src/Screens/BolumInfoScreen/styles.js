@@ -8,13 +8,14 @@ const styles = StyleSheet.create({
     height: 40,
     alignItems: 'center',
     marginBottom: 10,
-    backgroundColor: '#4c9ace',
+    backgroundColor: '#4d6994',
   },
   header: {
     flex: 1,
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 5,
+    color:'white'
   },
   flatList: {
     marginBottom: 100,

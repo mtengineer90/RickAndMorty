@@ -18,7 +18,7 @@ const BolumCard = ({item, bolum, bolumName, tarih, navigation}) => {
             <TouchableOpacity
               style={styles.button}
               onPress={() => navigation.navigate('BolumInfo', item)}>
-              <Text style={styles.buttontext}>{bolum} </Text>
+              <Text style={styles.buttontext}>Bölüm'e Git </Text>
             </TouchableOpacity>
           </View>
         </View>
